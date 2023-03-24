@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="mainVBox" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.polsl.webbrowser.controller.MainController">
+    <children>
+        <HBox VBox.vgrow="NEVER">
+            <children>
+                <Button id="backButton" fx:id="backButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#backButtonOnClick" styleClass="mainButtons" text="Back" HBox.hgrow="ALWAYS">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/backButton1.png" />
+                    </ImageView>
+                    </graphic>
+                </Button>
+                <Button id="nextButton" fx:id="nextButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#nextButtonOnClick" styleClass="mainButtons" text="Next" HBox.hgrow="ALWAYS">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/nextButton1.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button id="refreshButton" fx:id="refreshButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#refreshButtonOnClick" styleClass="mainButtons" text="Refresh" HBox.hgrow="ALWAYS">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/refreshButton1.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <TextField fx:id="urlTextField" onKeyPressed="#urlTextFieldKeyPressed" prefHeight="25.0" prefWidth="367.0" HBox.hgrow="ALWAYS" />
+                <Button fx:id="searchButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#searchButtonOnClick" styleClass="mainButtons" text="Search">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/searchButton1.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+            <MenuButton fx:id="bookmarkMenuButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onMouseClicked="#bookmarkMenuButtonOnClick" text="#">
+                <graphic>
+                    <ImageView>
+                        <Image url="@../img/bookmarksMenu.png" />
+                    </ImageView>
+                </graphic>
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Title:" />
+                  <CustomMenuItem hideOnClick="false" mnemonicParsing="false" styleClass="bookmarksMenuItems" text="Unspecified Action">
+                     <content>
+                        <TextField fx:id="bookmarkTitleTextField" />
+                     </content>
+                  </CustomMenuItem>
+                  <MenuItem fx:id="bookmarkAddMenuItem" mnemonicParsing="false" onAction="#bookmarkAddMenuItemOnClick" styleClass="buttonMenuItems" text="Add bookmark" />
+               </items>
+            </MenuButton>
+                <MenuButton fx:id="actionsMenuButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Actions">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../img/actionsMenu.png" />
+                        </ImageView>
+                    </graphic>
+                    <items>
+                        <MenuItem id="newTabMenuItem" fx:id="newTabMenuItem" mnemonicParsing="false" onAction="#newTabMenuItemOnClick" styleClass="mainButtons" text="New tab">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <Menu fx:id="settingsMenu" mnemonicParsing="false" text="Settings">
+                            <items>
+                                <Menu fx:id="searchEngineMenu" mnemonicParsing="false" text="Search Engine">
+                                    <items>
+                                        <RadioMenuItem fx:id="googleRadioMenuItem" mnemonicParsing="false" onAction="#googleRadioMenuItemOnSelection" text="Google">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="searchEngineGroup" />
+                                            </toggleGroup>
+                                        </RadioMenuItem>
+
+                                        <RadioMenuItem fx:id="bingRadioMenuItem" mnemonicParsing="false" onAction="#bingRadioMenuItemOnSelection" text="Bing" toggleGroup="$searchEngineGroup" />
+                                        <RadioMenuItem fx:id="yahooRadioMenuItem" mnemonicParsing="false" onAction="#yahooRadioMenuItemOnSelection" text="Yahoo" toggleGroup="$searchEngineGroup" />
+                                        <RadioMenuItem fx:id="duckRadioMenuItem" mnemonicParsing="false" onAction="#duckRadioMenuItemOnSelection" text="DuckDuckGo" toggleGroup="$searchEngineGroup" />
+                                    </items>
+                                </Menu>
+                                <CheckMenuItem fx:id="darkModeCheckMenuItem" mnemonicParsing="false" text="Dark Mode" />
+                        <Menu mnemonicParsing="false" text="Startup page">
+                           <items>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false" text="Unspecified Action">
+                                 <content>
+                                    <TextField fx:id="startupPageTextField" />
+                                 </content>
+                              </CustomMenuItem>
+                              <MenuItem fx:id="saveStartupPageMenuItem" mnemonicParsing="false" onAction="#saveStartupPageMenuItemOnClick" styleClass="buttonMenuItems" text="Save" />
+                           </items>
+                        </Menu>
+                        <MenuItem fx:id="exportHistoryMenuItem" mnemonicParsing="false" onAction="#exportHistoryMenuItemOnClick" styleClass="buttonMenuItems" text="Export history" />
+                            </items>
+                        </Menu>
+                        <Menu fx:id="historyMenu" mnemonicParsing="false" text="History">
+                            <items>
+                                <CustomMenuItem fx:id="historyCustomMenuItem" mnemonicParsing="false" text="Unspecified Action">
+                           <content>
+                              <ListView fx:id="historyListView" onMouseClicked="#historyListViewOnMouseClicked" prefHeight="200.0" prefWidth="200.0" />
+                           </content>
+                                </CustomMenuItem>
+                        <MenuItem fx:id="clearHistoryMenuItem" mnemonicParsing="false" onAction="#clearHistoryMenuItemOnClick" styleClass="buttonMenuItems" text="Clear History" />
+                            </items>
+                        </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="zoomOutMenuItem" mnemonicParsing="false" onAction="#zoomOutMenuItemClicked" text="Zoom Out">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="DOWN" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="zoomInMenuItem" mnemonicParsing="false" onAction="#zoomInMenuItemClicked" text="Zoom In">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="UP" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#closeMenuItemOnClick" styleClass="buttonMenuItems" text="Close" />
+                    </items>
+                </MenuButton>
+            </children>
+        </HBox>
+      <HBox fx:id="bookmarksHBox" />
+        <AnchorPane VBox.vgrow="ALWAYS">
+            <children>
+                <TabPane fx:id="mainTabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

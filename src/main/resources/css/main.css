@@ -1,0 +1,91 @@
+* {
+    -fx-font-family: "Open Sans", sans-serif;
+    -fx-font-size: 13px;
+}
+
+VBox, HBox, AnchorPane {
+    -fx-background-color: #F5F7FA;
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:top {
+    -fx-background-color: #E6E9ED;
+
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab:selected:top {
+    -fx-background-color: #F5F7FA;
+
+}
+
+.tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: #F5F7FA;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+     -fx-border-color: #F5F7FA;
+}
+
+.menu-item {
+    -fx-background-color: #E6E9ED;
+}
+.menu-item:hover {
+    -fx-background-color: #d3d8df;
+}
+
+.bookmarksMenuItems {
+    -fx-background-color: #E6E9ED;
+}
+.bookmarksMenuItems:hover {
+    -fx-background-color: #E6E9ED;
+}
+
+.separator:horizontal {
+    -fx-background-color: #E6E9ED;
+}
+
+.list-cell:filled:selected {
+  -fx-background-color: -fx-background ;
+  -fx-background-insets: 0 ;
+}
+
+.list-cell {
+    -fx-background-color: #F5F7FA;
+}
+.buttonMenuItems:hover {
+    -fx-background-color: #f5bcbc;
+}
+
+Button {
+	-fx-background-radius: 25;
+	-fx-background-color: #F5F7FA;
+}
+
+Button:hover {
+	-fx-background-color: #E6E9ED;
+}
+
+TextField {
+    -fx-background-radius: 10;
+    -fx-background-color: #E6E9ED;
+}
+
+TextField:hover {
+    -fx-background-color: #d3d8df;
+}
+
+MenuButton {
+    -fx-background-radius: 10;
+    -fx-background-color: #F5F7FA;
+}
+
+MenuButton:hover {
+    -fx-background-color: #E6E9ED;
+}
+
+MenuItem {
+    -fx-background-color: #F5F7FA;
+}
+
+MenuItem:hover {
+    -fx-background-color: #E6E9ED;
+}
